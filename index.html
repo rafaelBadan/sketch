@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <head>
     <title>EtchASketch</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
   <h1>EtchASketch</h1>
-  <input type="text" id="nCell" placeholder="new qty of rows and colums.."><br>
 
-  <button id="resizeBtn">Resize Board</button><br>
+  <div class="pure-form">
+    <input type="text" id="nCell" class="pure-input-1-4" placeholder="new qty of rows and colums..">
 
-  <button id="clearBtn">Clear Board</button>
+    <button id="resizeBtn" class="pure-button">Resize Board</button>
 
+    <button id="clearBtn" class="pure-button">Clear Board</button>
+  </div> <br>
+  <hr>
   <center>
     <div class='container'></div>
   </center>

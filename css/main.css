@@ -1,3 +1,16 @@
+body {
+  background-color: #6ba6bf;
+}
+
+h1 {
+  font-family: arial;
+  padding: 15px;
+}
+
+.pure-form {
+  padding: 15px;
+}
+
 .container {
   display: block;
   height: 960px;
@@ -11,6 +24,7 @@
 .row .cell {
   margin: 0;
   padding: 0;
+  border: none;
   background-color: black;
   opacity: .20;
   height: 60px;
