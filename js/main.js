@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Generate cells based on user input size
-  makeGrid(16,16);
+  makeGrid(32);
 
   paint();
 
@@ -27,35 +27,45 @@ function paint() {
 };
 
 
-function makeGrid(row,col) {
-  for (var i = 0; i < row; i++) {
-        var $row = $("<tr class='row' id='" + i + "'></tr>");
-        $row.appendTo('.container');
-            for (var j = 0; j < col ; j++) {
-                $('#' + i ).append("<div class='cell'></div>");
-            }
+function makeGrid(rowColCount) {
+
+  var size = 960 / rowColCount;
+
+  for (var i = 0; i < rowColCount; i++) {
+      var $row = $("<div class='row' id='" + i + "'></div>");
+      $row.appendTo('.container');
+      addCols(rowColCount, i);
+      setSize(size);
   }
 
+  return console.log('qtd de linhas: ' + rowColCount);
+
+};
+
+function addCols(colCount, rowId) {
+
+    for (var j = 0; j < colCount ; j++) {
+        $('#' + rowId ).append("<div class='cell'></div>");
+    }
+    return console.log('qtd de colunas: ' + colCount);
+};
+
+function setSize(newSize) {
+
+    $('.cell').css('height', newSize + 'px');
+    $('.cell').css('width', newSize + 'px');
+    $('.row').css('height', newSize + 'px');
 };
 
 
 function resizeBoard() {
     var numCell = 0;
-    var newSize = 0;
-
     numCell = $('#nCell').val();
 
     if (numCell > 0 && $.isNumeric(numCell)) {
       $('.cell').remove();
-
-        newSize = 960/numCell;
-        // Generate cells based on user input size
-        makeGrid(numCell,numCell);
-        $('.cell').css('height', newSize + 'px');
-        $('.cell').css('width', newSize + 'px');
-        // $('.cell').mouseenter(function() {
-        //   $(this).css({'opacity': 0.9});
-        // });
+      $('.row').remove();
+        makeGrid(numCell);
         paint();
     } else {
       alert('You must enter a number');
