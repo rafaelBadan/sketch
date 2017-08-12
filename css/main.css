@@ -14,11 +14,12 @@
   height: 60px;
   width: 60px;
   /*border-radius: 3px;*/
-  margin: none;
+  margin-bottom: 0px;
   display: inline-block;
   border: none;
 }
 
 tr {
   border: none;
+  margin-bottom: 0px;
 }

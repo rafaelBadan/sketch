@@ -1,15 +1,9 @@
 $(document).ready(function() {
 
-  $( "#nCell" ).keyup(function() {
-    var value = $( this ).val();
-    $( "#feedback" ).text( value + 'x' + value);
-  })
-  .keyup();
-
   // Generate cells based on user input size
   makeGrid(16,16);
-  
-  $('.cell').hover(draw);
+
+  paint();
 
   // Reset board color
   $('#clearBtn').click(function() {
@@ -19,20 +13,19 @@ $(document).ready(function() {
   //Resize cells
 
   $('#resizeBtn').click(function() {
-    var numCell = 0;
-    var newSize = 0;
-      $('.container').empty();
-        numCell = $('#nCell').val();
-        newSize = 960/numCell;
-        // Generate cells based on user input size
-        makeGrid(numCell,numCell);
-        $('.cell').css('height', newSize + 'px');
-        $('.cell').css('width', newSize + 'px');
+    resizeBoard();
   });
 
 
-
 });
+
+
+function paint() {
+  $('.cell').mouseenter(function() {
+          $(this).css({'opacity': 0.9});
+  });
+};
+
 
 function makeGrid(row,col) {
   for (var i = 0; i < row; i++) {
@@ -42,16 +35,36 @@ function makeGrid(row,col) {
                 $('#' + i ).append("<div class='cell'></div>");
             }
   }
+
 };
 
-function draw() {
-	var currentOp = +$(this).css('opacity');
-	if (currentOp < 1) {
-		currentOp += 0.1;
-		$(this).css({'opacity': currentOp});
-	}
-}
+
+function resizeBoard() {
+    var numCell = 0;
+    var newSize = 0;
+
+    numCell = $('#nCell').val();
+
+    if (numCell > 0 && $.isNumeric(numCell)) {
+      $('.cell').remove();
+
+        newSize = 960/numCell;
+        // Generate cells based on user input size
+        makeGrid(numCell,numCell);
+        $('.cell').css('height', newSize + 'px');
+        $('.cell').css('width', newSize + 'px');
+        // $('.cell').mouseenter(function() {
+        //   $(this).css({'opacity': 0.9});
+        // });
+        paint();
+    } else {
+      alert('You must enter a number');
+      $('#nCell').val('16');
+    }
+};
+
 
 function clearBoard() {
-  $('.cell').css('background-color','#f2d2d2');
+  $('.cell').css('background-color','black');
+  $('.cell').css('opacity',0.1);
 };
