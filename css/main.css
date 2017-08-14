@@ -1,5 +1,15 @@
-body {
-  background-color: #6ba6bf;
+.pure-menu {
+  background-color: #c7c7c7;
+}
+
+.pure-menu-item {
+  display: inline-block;
+}
+
+.header {
+  font-family: "Helvetica Neue";
+  color: rgb(75, 75, 75);
+  text-align: center;
 }
 
 h1 {
